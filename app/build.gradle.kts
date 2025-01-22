@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
     id("com.google.devtools.ksp")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -110,4 +112,11 @@ dependencies {
 
     //relaunch
     implementation ("androidx.work:work-runtime-ktx:2.9.0") // for WorkManager
+    implementation(libs.androidx.datastore.preferences)
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+}
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
